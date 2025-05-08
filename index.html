@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" 
+  x-data="{ 
+    search: '', 
+    faqs: [
+      { 
+        question: 'What is HyväThemes?', 
+        answer: 'HyväThemes is a modern frontend approach for Magento 2 that replaces the traditional Luma theme. It leverages technologies such as Tailwind CSS, Alpine.js for templating, providing a cleaner, faster, and more developer-friendly experience.' 
+      },
+      { 
+        question: 'How does HyväThemes improve performance compared to the default Magento theme?', 
+        answer: 'By replacing heavy frameworks like Knockout.js with lightweight alternatives, HyväThemes reduces the overall JavaScript and CSS footprint. This results in faster page load times, improved rendering performance, and a simpler codebase that is easier to maintain and optimize.' 
+      },
+      { 
+        question: 'Do I need prior experience with Tailwind CSS or Alpine.js to work with HyväThemes?', 
+        answer: 'While prior experience is beneficial, HyväThemes is designed with modern developers in mind. The documentation and sample projects make it easy for those new to Tailwind CSS or Alpine.js to get up to speed quickly. A willingness to learn these modern tools will go a long way.' 
+      },
+      { 
+        question: 'Is HyväThemes a free project?', 
+        answer: 'No, HyväThemes is a commercial solution with licensing fees. However, many businesses find that the performance improvements and reduced development time provide a strong return on investment, making it worthwhile in the long run.' 
+      },
+    ] 
+  }"
+>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - HyväThemes</title>
+  <link href="./dist/faq.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="bg-white p-6 text-gray-900">
+  <div class="max-w-[1440px] m-auto">
+    <div class="max-w-5xl px-6 py-12 mx-auto">
+      <h2 class="max-w-[544px] mx-auto mb-[46px] text-center font-bold text-[40px] leading-[100%] tracking-[-0.02em]">Frequently Asked Questions about HyväThemes</h2>
+
+      <input x-model="search" type="text" placeholder="Search..."
+            class="flex w-full max-w-[626px] px-4 py-3 border border-[#E0E0E0] mx-auto mb-[80px] placeholder:text-[#828282] placeholder:text-base placeholder:font-medium placeholder:leading-[150%]" />
+
+      <template   
+        x-for="faq in faqs"
+        :key="faq.question"
+      >
+        <div class="mb-4 border-b last:border-0 border-gray-200 rounded transition-all duration-300">
+          <button class="flex items-center justify-between w-full pb-4 text-left font-bold text-base text-[#334155] border-none transition-all hover:text-black">
+            <p x-text="faq.question"></p>
+            <svg :class="{'rotate-180': faq.open}" class="w-5 h-5 transform transition-transform duration-200" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 7.29289C5.68342 6.90237 6.31658 6.90237 6.70711 7.29289L10 10.5858L13.2929 7.29289C13.6834 6.90237 14.3166 6.90237 14.7071 7.29289C15.0976 7.68342 15.0976 8.31658 14.7071 8.70711L10.7071 12.7071C10.3166 13.0976 9.68342 13.0976 9.29289 12.7071L5.29289 8.70711C4.90237 8.31658 4.90237 7.68342 5.29289 7.29289Z" fill="#64748B"/>
+            </svg>
+          </button>
+
+          <div x-transition class="transition-all">
+            <p class="pb-4 text-base text-[#64748B] leading-[24px]" x-text="faq.answer"></p>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</body>
+</html>
