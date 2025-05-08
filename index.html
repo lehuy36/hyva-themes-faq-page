@@ -39,7 +39,9 @@
             class="flex w-full max-w-[626px] px-4 py-3 border border-[#E0E0E0] mx-auto mb-[80px] placeholder:text-[#828282] placeholder:text-base placeholder:font-medium placeholder:leading-[150%]" />
 
       <template   
-        x-for="faq in faqs"
+        x-for="faq in (search.length >= 3
+          ? faqs.filter(f => f.question.toLowerCase().includes(search.toLowerCase()) || f.answer.toLowerCase().includes(search.toLowerCase()))
+          : faqs)"
         :key="faq.question"
       >
         <div class="mb-4 border-b last:border-0 border-gray-200 rounded transition-all duration-300">
